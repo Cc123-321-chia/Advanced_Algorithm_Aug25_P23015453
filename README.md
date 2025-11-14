@@ -1,7 +1,6 @@
 Question 1: Hashing System
 
 Baby Products Inventory Management
-——————————————————————————————————
 
 - Implements hash table with separate chaining for collision resolution
 
@@ -16,7 +15,6 @@ Baby Products Inventory Management
 Question 2: Graph System
 
 Social Media Network
-————————————————————
 
 - Builds directed graph for user relationships (followers/following)
 
@@ -31,7 +29,6 @@ Social Media Network
 Question 3: Concurrent Processing
 
 Multithreading Performance Analysis
-———————————————————————————————————
 
 - Compares single-threaded vs multithreaded factorial calculations
 

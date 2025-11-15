@@ -17,7 +17,7 @@ class HashTableArray:
             self.key = key
             self.value = value
 
-    def __init__(self, capacity=10):
+    def __init__(self, capacity=100):
         # Initialize hash table with specified capacity
         self.capacity = capacity
         self.table = [[] for _ in range(capacity)]  # Array of buckets (lists)

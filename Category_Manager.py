@@ -15,9 +15,7 @@ class CategoryManager:
         self.shop_storage = shop_storage
 
         # Sample data
-        self.categories = [
-            "Milk Powder", "Diapers", "Care", "Feeding", "Bath", "Travel"
-        ]
+        self.categories = ["Milk Powder", "Diapers", "Care", "Feeding", "Bath", "Travel"]
 
     # ==========================================================================
     # DISPLAY CATEGORIES SECTION - CATEGORY VIEWING

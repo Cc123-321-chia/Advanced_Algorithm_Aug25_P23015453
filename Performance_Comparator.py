@@ -123,19 +123,7 @@ class PerformanceComparator:
         print("\n" + "=" * 50)
         print("Performance Analysis")
         print("=" * 50)
-        print("Hash Table Advantages:")
-        print("- O(1) average time complexity for search operations")
-        print("- Direct access via hash function computation")
-        print("- Performance remains constant regardless of dataset size")
-        print("- Ideal for frequent search operations")
 
-        print("\nArray Linear Search Limitations:")
-        print("- O(n) time complexity in worst case")
-        print("- Must check each element sequentially")
-        print("- Performance degrades linearly with dataset size")
-        print("- Suitable only for small datasets or infrequent searches")
-
-        print(f"\nConclusion: Hash table is {array_time / hash_table_time:.2f}x faster ")
-        print("for search operations in this inventory system.")
+        print(f"\nConclusion: Hash table is {array_time / hash_table_time:.2f}x faster for \nsearch operations in this inventory system.")
 
         return hash_table_time, array_time

@@ -122,9 +122,9 @@ class BabyShopStorage:
         updated_product = BabyProduct(product_id, name, category, price, quantity, remarks)
         result = self.hash_table.insert(product_id, updated_product)
         if result == "updated":
-            print("-" * 120)
+            print("-" * 150)
             return True, f"Product updated: {updated_product}"
-            print("-" * 120)
+            print("-" * 150)
         else:
             return False, "Failed to update product"
 
@@ -151,13 +151,58 @@ class BabyShopStorage:
     def preload_sample_data(self):
         """Preload sample baby products for demonstration"""
         sample_products = [
-            ("BP001", "Baby Milk Powder", "Milk Powder", 25.99, 50, "For 0-6 months"),
-            ("BP002", "Baby Diapers", "Diapers", 15.50, 100, "Size S, hypoallergenic"),
-            ("BP003", "Baby Wipes", "Care", 5.99, 200, "Alcohol-free, gentle"),
-            ("BP004", "Feeding Bottle", "Feeding", 8.99, 30, "240ml, BPA-free"),
-            ("BP005", "Baby Shampoo", "Bath", 12.99, 40, "Tear-free formula"),
-            ("BP006", "Baby Stroller", "Travel", 199.99, 10, "Lightweight, foldable"),
-            ("BP007", "Pacifier", "Feeding", 4.99, 60, "Orthodontic, silicone")
+            ("BP001", "Enfamil Baby Milk Powder (900g)", "Milk Powder", 25.99, 50, "For 0-6 months, iron fortified"),
+            ("BP002", "Pampers Baby Diapers (Size S, 64pcs)", "Diapers", 15.50, 100,
+             "Hypoallergenic, wetness indicator"),
+            ("BP003", "Huggies Baby Wipes (80pcs)", "Care", 5.99, 200, "Alcohol-free, gentle on skin"),
+            ("BP004", "Philips Avent Feeding Bottle (240ml)", "Feeding", 8.99, 30, "BPA-free, anti-colic system"),
+            ("BP005", "Johnson's Baby Shampoo (400ml)", "Bath", 12.99, 40, "Tear-free formula, pH balanced"),
+            ("BP006", "Graco Baby Stroller Lite", "Travel", 199.99, 10, "Lightweight, foldable, one-hand close"),
+            ("BP007", "NUK Pacifier Orthodontic", "Feeding", 4.99, 60, "Orthodontic, silicone, 0-6 months"),
+            ("BP008", "Carter's Baby Blanket (100x120cm)", "Nursery", 29.99, 25,
+             "Soft cotton material, machine washable"),
+            ("BP009", "Motorola Baby Monitor HD", "Safety", 89.99, 15, "Video and audio monitoring, night vision"),
+            ("BP010", "BabyBjorn Baby Carrier One", "Travel", 59.99, 20, "Ergonomic design, 4 carrying positions"),
+            ("BP011", "Sophie la Girafe Teething Ring", "Health", 6.99, 45, "Soothing gel filled, natural rubber"),
+            ("BP012", "Aveeno Baby Lotion (227g)", "Bath", 8.99, 35, "Hypoallergenic formula, oatmeal enriched"),
+            ("BP013", "Burt's Bees Baby Oil (118ml)", "Bath", 7.49, 40, "Natural ingredients, 100% natural"),
+            ("BP014", "Johnson's Baby Powder (200g)", "Bath", 5.99, 50, "Talc-free, corn starch based"),
+            ("BP015", "Dove Baby Soap (100g x 3)", "Bath", 4.99, 60, "Gentle on skin, 1/4 moisturizing cream"),
+            ("BP016", "Hudson Baby Towel with Hood", "Bath", 12.99, 30, "Hooded towel, 100% cotton"),
+            ("BP017", "Summer Infant Baby Bathtub", "Bath", 24.99, 18, "Non-slip surface, built-in support"),
+            ("BP018", "Boppy Nursing Pillow", "Feeding", 34.99, 22, "Supportive design, removable cover"),
+            ("BP019", "Tommee Tippee Bottle Warmer", "Feeding", 29.99, 25, "Fast heating, auto shut-off"),
+            ("BP020", "Beaba Baby Food Maker", "Feeding", 49.99, 12, "Multi-function, steam and blend"),
+            ("BP021", "Stokke High Chair Tripp Trapp", "Feeding", 79.99, 8, "Adjustable height, grows with child"),
+            ("BP022", "Munchkin Baby Spoon (4pcs)", "Feeding", 3.99, 80, "Soft tip, heat sensitive"),
+            ("BP023", "Aden + Anais Baby Bib (3pcs)", "Feeding", 2.99, 100, "Waterproof, adjustable snap"),
+            ("BP024", "Skip Hop Diaper Bag Backpack", "Travel", 39.99, 20, "Multiple compartments, insulated pocket"),
+            ("BP025", "Britax Car Seat Marathon", "Travel", 129.99, 10, "Safety certified, side impact protection"),
+            ("BP026", "UPPAbaby Stroller Vista", "Travel", 199.99, 6, "All-terrain wheels, reversible seat"),
+            ("BP027", "Hanes Baby Socks (6 pairs)", "Clothing", 5.99, 70, "Non-slip bottoms, cotton blend"),
+            ("BP028", "iPlay Baby Hat Sun Protection", "Clothing", 8.99, 40, "Sun protection UPF 50+"),
+            ("BP029", "Gerber Onesies Bodysuit (Pack of 3)", "Clothing", 12.99, 55, "100% cotton, snap closure"),
+            ("BP030", "The Children's Place Pajamas", "Clothing", 15.99, 35, "Cotton material, flame resistant"),
+            ("BP031", "Columbia Baby Jacket", "Clothing", 24.99, 25, "Weather resistant, Omni-Heat thermal"),
+            ("BP032", "Stride Rite Baby Shoes", "Clothing", 19.99, 30, "Soft sole, flexible, machine washable"),
+            ("BP033", "Zutano Baby Mittens", "Clothing", 4.99, 60, "Scratch prevention, stay-on design"),
+            ("BP034", "Kate Quinn Baby Romper", "Clothing", 18.99, 28, "Easy to wear, organic cotton"),
+            ("BP035", "Braun Thermometer Digital", "Health", 14.99, 40, "Digital display, forehead scanning"),
+            ("BP036", "Fridababy Nasal Aspirator", "Health", 9.99, 45, "Bulb type, hospital grade"),
+            ("BP037", "Safety 1st Baby Nail Clipper", "Health", 3.99, 65, "Safety guard, magnifying glass"),
+            ("BP038", "Little Remedies Medicine Dropper", "Health", 2.99, 75, "Accurate dosage, markings in ml"),
+            ("BP039", "Zwilling Baby Brush Set", "Care", 6.99, 50, "Soft bristles, natural wood handle"),
+            ("BP040", "Tangle Teezer Baby Comb", "Care", 3.49, 55, "Gentle on scalp, detangling"),
+            ("BP041", "Jordan Baby Toothbrush Step 1", "Care", 4.99, 48, "Finger brush, soft silicone"),
+            ("BP042", "Desitin Diaper Rash Cream (113g)", "Health", 8.49, 38, "Zinc oxide, maximum strength"),
+            ("BP043", "Neutrogena Baby Sunscreen SPF 50", "Health", 11.99, 32, "SPF 50, water resistant 80min"),
+            ("BP044", "Babyganics Insect Repellent", "Health", 9.49, 36, "Natural formula, DEET-free"),
+            ("BP045", "Mustela Baby Shampoo (500ml)", "Bath", 7.99, 42, "Tear-free, avocado perseose"),
+            ("BP046", "California Baby Conditioner (192ml)", "Bath", 7.99, 40, "Detangling, organic ingredients"),
+            ("BP047", "Mr. Bubble Bubble Bath (532ml)", "Bath", 6.99, 45, "Fun bubbles, tear-free formula"),
+            ("BP048", "Munchkin Bath Toys Set", "Bath", 12.99, 28, "Floating animals, 8 pieces set"),
+            ("BP049", "Pottery Barn Kids Baby Robe", "Bath", 22.99, 20, "Plush material, hooded"),
+            ("BP050", "Fisher-Price Bath Thermometer", "Bath", 8.99, 35, "Duck shape, easy to read")
         ]
 
         # Add all sample products to the system

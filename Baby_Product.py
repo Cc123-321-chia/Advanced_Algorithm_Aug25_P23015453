@@ -24,7 +24,7 @@ class BabyProduct:
     def __str__(self):
         return (
             f"｜{self.product_id:<10}"
-            f"｜{self.name:<30}"
+            f"｜{self.name:<50}"
             f"｜{self.category:<20}"
             f"｜RM {self.price:<10}"  
             f"｜{self.quantity:<10}"  

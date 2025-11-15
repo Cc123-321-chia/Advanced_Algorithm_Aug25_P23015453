@@ -79,7 +79,6 @@ class FactorialThread(threading.Thread):
             'end': self.end_time,
             'thread_id': self.thread_id
         }
-
         print(f"{color}{self.thread_id} END ({self.number}!){RESET}")
 
 def multithreaded_factorials(numbers):
@@ -148,7 +147,6 @@ def singlethreaded_factorials(numbers):
     for i, num in enumerate(numbers):
         thread_id = f"ST{i + 1}"
 
-        # 根据线程ID选择颜色
         if thread_id == "ST1":
             color = GREEN
         elif thread_id == "ST2":
@@ -273,13 +271,13 @@ def run_singlethread_experiment():
 
     return round_times, avg_time
 
+
 def compare_results(multi_times, multi_avg, single_times, single_avg):
     """Compare multithreading and single-thread results"""
     print("\n" + "=" * 70)
     print(" " * 20 + "Performance Comparison Analysis")
     print("=" * 70)
 
-    # 先显示表格
     print("\nRound-by-round Comparison:")
     print("  Round | Multithreading Time | Single-thread Time")
     print("-" * 55)

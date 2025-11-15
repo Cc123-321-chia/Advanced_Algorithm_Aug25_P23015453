@@ -123,9 +123,9 @@ class InventorySystem:
         # Add product to storage
         success, message = self.shop_storage.add_product(product_id, name, category, price, quantity, remarks)
         if success:
-            print('-' * 120)
+            print('-' * 150)
             print(f"\033[32mNew Product created: {message}\033[0m")
-            print('-' * 120)
+            print('-' * 150)
         else:
             print(f"\033[31m{message}\033[0m")
 
@@ -229,8 +229,8 @@ class InventorySystem:
     def show_all_products(self):
         """Display all products in a formatted table"""
         print("\n--- All Products List ---")
-        print(f"\n｜{'ID':<10}｜{'Name':<30}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
-        print('-' * 120)
+        print(f"\n｜{'ID':<10}｜{'Name':<50}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
+        print('-' * 150)
 
         products = self.shop_storage.get_all_products()
         if products:
@@ -256,11 +256,11 @@ class InventorySystem:
 
         # Display available products for editing
         print("\nAvailable Products:")
-        print(f"\n｜{'ID':<10}｜{'Name':<30}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
-        print('-' * 120)
+        print(f"\n｜{'ID':<10}｜{'Name':<50}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
+        print('-' * 150)
         for product in products:
             print(f"{product}")
-        print('-' * 120)
+        print('-' * 150)
 
         # Get product ID to edit
         product_id = self.get_input_with_exit("\nEnter Product ID to edit: ")
@@ -282,9 +282,9 @@ class InventorySystem:
 
     def edit_product_details(self, product_id, product):
         """Edit specific product details"""
-        print("-" * 120)
+        print("-" * 150)
         print(f"\nEditing Product: {product}")
-        print("-" * 120)
+        print("-" * 150)
         print("\nNote: Press Enter to keep current value")
         print("* Press 'E' at any time to cancel")
         print("-" * 50)
@@ -368,11 +368,11 @@ class InventorySystem:
 
         # Display available products for deletion
         print("\nAvailable Products:")
-        print(f"\n｜{'ID':<10}｜{'Name':<30}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
-        print('-' * 120)
+        print(f"\n｜{'ID':<10}｜{'Name':<50}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
+        print('-' * 150)
         for product in products:
             print(f"{product}")
-        print('-' * 120)
+        print('-' * 150)
 
         # Get product ID to delete
         product_id = self.get_input_with_exit("\nEnter Product ID to delete: ")
@@ -397,7 +397,7 @@ class InventorySystem:
             if success:
                 print(f"\033[32m{message}\033[0m")
             else:
-                print(f"\033[{message}31m\033[0m")
+                print(f"\033[31m{message}\033[0m")
         else:
             print("Deletion cancelled.")
 
@@ -410,10 +410,10 @@ class InventorySystem:
         if products:
             print(f"\n--- Products in Category '{category}' ---")
             for product in products:
-                print(f"\n｜{'ID':<10}｜{'Name':<30}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
-                print('-' * 120)
+                print(f"\n｜{'ID':<10}｜{'Name':<50}｜{'Category':<20}｜{'Price':<12}｜{'Stock':<10}｜{'Remarks':<20}")
+                print('-' * 150)
                 print(f"{product}")
-                print('-' * 120)
+                print('-' * 150)
         else:
             print(f"\nNo products in category '{category}'")
 
@@ -434,7 +434,7 @@ class InventorySystem:
             print("3. Exit Category Management")
             print("-" * 36)
 
-            choice_input = self.get_input_with_exit("Choose operation (1-3): ")
+            choice_input = self.get_input_with_exit("Choose option (1-3): ")
             if choice_input is None:
                 print("Operation cancelled.")
                 break

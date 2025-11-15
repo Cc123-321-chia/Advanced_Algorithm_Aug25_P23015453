@@ -160,6 +160,7 @@ Username: {self.username}
             preview += f"  🕒 {time_str}: {content_preview}\n"
         return preview
 
+
 # =============================================================================
 # SECTION 3: SOCIAL MEDIA APP CLASS - Main application logic
 # =============================================================================
@@ -195,7 +196,7 @@ class SocialMediaApp:
 
     def admin_login(self, password):
         """Admin login"""
-        if password == "1234":
+        if password == "8888":
             return True, "Admin login successful"
         return False, "Admin password incorrect"
 
@@ -474,11 +475,11 @@ def manage_posts_flow(app):
 def create_sample_data(app):
     """Create sample users and relationships for testing"""
     sample_users = [
-        ("alice", "pass123", "Alice Smith", "🚹 Male", "Love traveling and photography", True),
-        ("bob", "pass123", "Bob Johnson", "🚹 Male", "Software developer, love open source projects", True),
-        ("charlie", "pass123", "Charlie Brown", "🚹 Male", "Private space, please don't disturb", False),
-        ("diana", "pass123", "Diana Prince", "🚺 Female", "Food blogger, share daily life", True),
-        ("eve", "pass123", "Eve Wilson", "🚺 Female", "Fitness coach", True)
+        ("alice", "alice123", "Alice Smith", "🚹 Male", "Love traveling and photography", True),
+        ("bob", "bob123", "Bob Johnson", "🚹 Male", "Software developer, love open source projects", True),
+        ("charlie", "charlie123", "Charlie Brown", "🚹 Male", "Private space, please don't disturb", False),
+        ("diana", "diana123", "Diana Prince", "🚺 Female", "Food blogger, share daily life", True),
+        ("eve", "eve123", "Eve Wilson", "🚺 Female", "Fitness coach", True)
     ]
 
     for username, password, name, gender, bio, is_public in sample_users:
@@ -502,7 +503,7 @@ def create_sample_data(app):
 
     # Add sample posts
     app.people["alice"].add_post("Went to the beach today, beautiful scenery! 🌊")
-    app.people["alice"].add_post("Sharing some travel photos with everyone")
+    app.people["alice"].add_post("My cats look lovely all the time！")
     app.people["bob"].add_post("Just completed a new project, feeling accomplished!")
     app.people["diana"].add_post("Tried a new recipe, tastes great!~")
 
@@ -515,9 +516,11 @@ def print_success(message):
     """Print success message in green"""
     print(f"\033[92m{message}\033[0m")
 
+
 def print_error(message):
     """Print error message in red"""
     print(f"\033[91m{message}\033[0m")
+
 
 def print_table(headers, data):
     """Print data in table format"""
@@ -542,6 +545,7 @@ def print_table(headers, data):
         print(data_row)
 
     print(separator)
+
 
 def get_input_with_retry(prompt, allow_zero=True):
     user_input = input(prompt)
@@ -602,6 +606,7 @@ def display_all_users_detailed_table_with_posts(app):
     print_table(headers, data)
     return users
 
+
 def display_user_selection(app, users, current_user=None):
     """Display user selection table (exclude current user)"""
     headers = ["No", "Username", "Name", "Status", "Type"]
@@ -617,6 +622,7 @@ def display_user_selection(app, users, current_user=None):
 
     print_table(headers, data)
     return filtered_users
+
 
 # =============================================================================
 # SECTION 8: PROFILE AND FOLLOW OPTIONS
@@ -699,6 +705,7 @@ def show_profile_and_follow_options(app, target_user):
         else:
             print_error("❌ Invalid choice, please try again")
 
+
 def show_own_profile_options(app, target_user):
     """Show profile editing options for own profile"""
     person, profile = app.view_profile(target_user)
@@ -732,6 +739,7 @@ def show_own_profile_options(app, target_user):
 
         result = app.update_profile(new_name, new_gender, new_bio, is_public)
         print_success(result)
+
 
 # =============================================================================
 # SECTION 9: FOLLOW REQUEST MANAGEMENT
@@ -947,6 +955,7 @@ def admin_menu():
     print("4. 🚪 Exit System")
     print("=" * 50)
 
+
 # =============================================================================
 # SECTION 12: FLOW CONTROLLERS (Login, register, admin flows)
 # =============================================================================
@@ -968,6 +977,7 @@ def login_flow(app):
     else:
         print_error(f"❌ {message}")
         return False
+
 
 def register_flow(app):
     """Handle new user registration flow"""
@@ -1027,6 +1037,7 @@ def register_flow(app):
     else:
         print_error(f"❌ {message}")
 
+
 def admin_flow(app):
     """Handle admin login flow"""
     password = get_input_with_retry("* Enter admin password (0 to go back): ")
@@ -1040,6 +1051,7 @@ def admin_flow(app):
     else:
         print_error(f"❌ {message}")
         return False
+
 
 # =============================================================================
 # SECTION 13: USER FLOW CONTROLLERS
@@ -1067,6 +1079,7 @@ def user_browse_flow(app):
             print_error("❌ Invalid selection")
     except ValueError:
         print_error("❌ Please enter a valid number")
+
 
 def user_following_flow(app):
     """Handle viewing followed users"""
@@ -1098,6 +1111,7 @@ def user_following_flow(app):
             print_error("❌ Please enter a valid number")
     else:
         print("📭 Not following anyone yet")
+
 
 def user_followers_flow(app):
     """Handle viewing followers"""
@@ -1136,6 +1150,7 @@ def user_followers_flow(app):
     else:
         print("📭 No followers yet")
 
+
 def user_recommendations_flow(app):
     """Handle viewing recommended users"""
     print("\n💡 RECOMMENDED USERS")
@@ -1165,6 +1180,7 @@ def user_recommendations_flow(app):
             print_error("❌ Please enter a valid number")
     else:
         print("📭 No recommended users")
+
 
 # =============================================================================
 # SECTION 14: ADMIN FLOW CONTROLLERS
@@ -1224,6 +1240,7 @@ def show_user_complete_details(app, username):
 
     print(f"{'=' * 60}")
 
+
 # =============================================================================
 # SECTION 15: MAIN APPLICATION CONTROLLER
 # =============================================================================
@@ -1240,7 +1257,7 @@ def main():
         if not app.current_user and not is_admin_mode:
             # Main menu for logged out users
             main_menu()
-            choice = get_input_with_retry("* Enter your choice (0 to Exit): ", allow_zero=True)
+            choice = get_input_with_retry("* Enter your choice: ", allow_zero=True)
 
             if choice == '1':
                 login_flow(app)
